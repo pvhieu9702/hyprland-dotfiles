@@ -1,13 +1,23 @@
 #!/bin/bash
 
-set -e
-
-DOTFILES_DIR="$HOME/hyprland-dotfiles"
-
 if ! grep -q "Arch" /etc/os-release; then
     echo "This script only supports Arch Linux"
     exit 1
 fi
+
+DOTFILES_DIR="$HOME/hyprland-dotfiles"
+
+set -e
+
+# Ask sudo password once
+sudo -v
+
+# Keep sudo session alive
+while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+done 2>/dev/null &
 
 echo "========== UPDATE SYSTEM =========="
 sudo pacman -Syu --noconfirm
