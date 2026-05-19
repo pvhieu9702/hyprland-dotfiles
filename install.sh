@@ -76,14 +76,7 @@ for dir in */; do
         echo "Stowing $dir_name..."
         
         # Use --adopt to safely absorb any existing conflicting configs/symlinks
-        stow --adopt "$dir_name"
+        stow "$dir_name"
     fi
 done
-
-# CRITICAL STEP: When using --adopt, if there were local changes in ~/, 
-# stow might have modified files inside your git repo. 
-# We reset them to keep your dotfiles repository clean as intended.
-echo "Cleaning up adopted tracking changes..."
-git reset --hard HEAD
-
 echo "========== DONE =========="

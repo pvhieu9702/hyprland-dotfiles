@@ -30,7 +30,6 @@ sudo
 ttf-jetbrains-mono-nerd
 ufw
 vim
-visual-studio-code-bin
 waybar
 wireplumber
 wofi
